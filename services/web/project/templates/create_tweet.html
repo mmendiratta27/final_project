@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Share something with the world!</h2>
+
+{% if no_words %}
+YOU CAN'T DO AN EMPTY TWEET!
+{% endif %}
+
+{% if posted %}
+message posted :)
+{% endif %}
+
+<form action='/create_tweet' method="POST">
+    <table>
+        <tr>
+            <td>message</td>
+            <td><input type=text name='tweet'></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type=submit value='post'></td>
+        </tr>
+    </table>
+</form>
+
+
+{% endblock %}

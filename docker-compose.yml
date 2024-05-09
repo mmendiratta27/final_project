@@ -8,20 +8,22 @@ services:
       # build (mount) volume
       - ./services/web/:/usr/src/app/
     ports:
-            - 31338:5000
+      - 2727:5000
     env_file:
       - ./.env.dev
     depends_on:
-      - db
-  db:
-    image: postgres:13
+            - postgres
+  postgres:
+    build: services/postgres
     volumes:
-      #names volume => does not start with ./
-      - postgres_data:/var/lib/postgresql/data/
+      - ./:/tmp/db
+      - postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=hello_flask
-      - POSTGRES_PASSWORD=hello_flask
-      - POSTGRES_DB=hello_flask_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass
+      - PGUSER=postgres
+    ports:
+      - 13231:5432
 
 volumes:
-  postgres_data:
+  postgres:

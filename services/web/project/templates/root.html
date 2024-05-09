@@ -1,0 +1,50 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<!-- html lang="en" -->
+<head>
+  <meta charset="UTF-8">
+  <title>Twitter Tweet Box UI Design | CodingNepal</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<ul>
+{% if tweets %}
+{% for tweet in tweets %}
+<li style="display: inline-block;margin-right: 100px;width: 300px;">
+<body class="outer">
+  <div class="wrapper">
+    <div class="input-box">
+      <div class="tweet-area">
+      	<div>{{ tweet.text }}</div>
+      </div>
+      <div class="privacy">
+        <i class="fas fa-user"></i>
+	<span>{{ tweet.username }}</span>
+      </div>
+    </div>
+    <div class="bottom">
+	    Posted: {{ tweet.created_at }}
+    </div>
+  </div>
+</body>
+</li>
+{% endfor %}
+{% else %}
+No Tweets!
+{% endif %}
+</ul>
+<div>
+	{% if page_num > 1 %}
+		<a href="?page_num={{ page_num-1 }}">Previous</a>
+	{% endif %}
+	{% if page_full %}
+	<a href="?page_num={{ page_num+1 }}">Next</a>
+	{% endif %}
+</div>
+{% endblock %}
+

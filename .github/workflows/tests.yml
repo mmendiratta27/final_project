@@ -1,0 +1,24 @@
+name: tests
+on:
+  push:
+    branches: ['*']
+  pull_request:
+    branches: ['*']
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker
+      run: |
+        # run the database in docker container
+        docker-compose up -d --build
+
+        # verify that it is running successfully
+        # this is an idempotent command useful for debugging
+        docker ps -a
+        sleep 20
+
+        sh ./load_tweets.sh
+
+        docker-compose exec -T postgres psql

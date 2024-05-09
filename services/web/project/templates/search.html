@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Search Twitter</h2>
+
+<form action='/search' method="GET">
+    <table>
+        <tr>
+            <td>Search:</td>
+            <td><input type="text" name="search_word"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Search"></td>
+        </tr>
+    </table>
+</form>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Twitter Tweet Box UI Design | CodingNepal</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<ul>
+{% if tweets %}
+{% for tweet in tweets %}
+<li style="display: inline-block;margin-right: 100px;width: 300px;">
+<body class="outer">
+  <div class="wrapper">
+    <div class="input-box">
+      <div class="tweet-area">
+        <div>{{ tweet.text }}</div>
+      </div>
+      <div class="privacy">
+        <i class="fas fa-user"></i>
+        <span>{{ tweet.username }}</span>
+      </div>
+    </div>
+    <div class="bottom">
+            Posted: {{ tweet.created_at }}
+    </div>
+  </div>
+</body>
+</li>
+{% endfor %}
+{% else %}
+No Search!
+{% endif %}
+</ul>
+<div>
+        {% if page_num > 1 %}
+                <a href="?page_num={{ page_num-1 }}">Previous</a>
+        {% endif %}
+        {% if page_full %}
+        <a href="?page_num={{ page_num+1 }}">Next</a>
+        {% endif %}
+</div>
+
+<!--
+    {% if tweets %}
+    <h2>Search Results</h2>
+    <ul>
+    {% for tweet in tweets %}
+    {% if tweet.text %}
+    <p>
+        <strong>{{ tweet.username }}</strong>: {{ tweet.text }}
+        <br>
+        <small>Posted on {{ tweet.created_at }}</small>
+    </p>
+    {% endif %}
+    {% endfor %}
+    </ul>
+
+    {% else %}
+        <p> No results! </p>
+    {% endif %}
+-->
+{% endblock %}

@@ -1,0 +1,17 @@
+<h1> CS40 TWITTER CLONE :) </h1>
+
+<ol style="margin-bottom: 50px">
+        <li><a href='/'>Home</a></li>
+	{% if logged_in %}
+        <li><a href='/create_tweet'>Create Tweet</a></li>
+        <li><a href='/logout'>Logout</a></li>
+	{% else %}
+        <li><a href='/login'>Login</a></li>
+        <li><a href='/create_account'>Create Account</a></li>
+	{% endif %}
+        <li><a href='/search'>Search</a></li>
+	
+</ol>
+
+{% block content %}
+{% endblock %}
