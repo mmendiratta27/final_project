@@ -20,6 +20,8 @@ jobs:
         sleep 20
 
         pip install sqlalchemy
+        pip install tqdm
+        pip install psycopg2
 
         sh ./load_tweets.sh
 
