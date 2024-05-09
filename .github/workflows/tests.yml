@@ -19,6 +19,8 @@ jobs:
         docker ps -a
         sleep 20
 
+        pip install sqlalchemy
+
         sh ./load_tweets.sh
 
         docker-compose exec -T postgres psql
