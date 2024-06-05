@@ -1,6 +1,6 @@
 # Creating a Web Service with Flask, Postgres, Docker, Nginx, and Gunicorn
 
-I created a basic and fully functioning production web service that allows you to create an account, make tweets, and search tweets from all urers. To accomplish this, I first created a development site on a local server and databse. I then conected the application to postgres and netcat allowing me to shift from the local site to a production site. I also used a `docker-compose.prod.yml` Dockerfile to distinguish my production and development code. This new Dockerfile used **multi-stage build** to help reduce my final Docker image size. I added **Nginx** to serve as a reverse proxy for Gunicorn to handle user requests and static files.
+I created a basic and fully functioning production web service that allows you to create an account, make tweets, and search tweets from all users. To accomplish this, I first created a development site on a local server and databse. I then conected the application to postgres and netcat allowing me to shift from the local site to a production site. I also used a `docker-compose.prod.yml` Dockerfile to distinguish my production and development code. This new Dockerfile used **multi-stage build** to help reduce my final Docker image size. I added **Nginx** to serve as a reverse proxy for Gunicorn to handle user requests and static files.
 
 ## Build Instructions
 
